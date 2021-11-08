@@ -63,19 +63,19 @@ def main():
     
     time_sale_arr = list(map(int, time_sale[1].split(':')))
 
-    print(is_ready(time_sale_arr[0]))
-
     while not is_ready(time_sale_arr[0]):
       sleep(0.01)
 
+    results = []
     i = 0
     while i != 1000000:
       buy_res = session.post(mbox_buy_api, json=data).json()
-      print(buy_res)
+      results.append(buy_res)
       i += 1
+
+    print(results)
 
 
 if __name__ == '__main__':
     main()
-
 
