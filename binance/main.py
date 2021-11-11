@@ -30,8 +30,18 @@ def is_ready(s_hours):
     time_now_arr = list(map(int, time_now[:8].split(':')))
 
     now_hours = time_now_arr[0] - 3
+    print(time_now_arr)
 
-    return now_hours == s_hours
+    if (s_hours - now_hours) == 1:
+                 # minutes                     # seconds
+      return (time_now_arr[1] >= 59) and (time_now_arr[2] >= 55)
+
+    else: return False
+
+# TODO:
+# >> use pool to parallelize requests instead of a loop
+# >> compile this?
+# >> Captcha?
 
 def main():
     session = requests.Session()
